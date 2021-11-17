@@ -79,7 +79,7 @@ pa2page(physaddr_t pa)
 static inline void*
 page2kva(struct PageInfo *pp)
 {
-	return KADDR(page2pa(pp));
+	return KADDR(page2pa(pp));   //接受一个物理地址并返回相应的虚拟地址
 }
 
 pte_t *pgdir_walk(pde_t *pgdir, const void *va, int create);

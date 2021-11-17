@@ -7,11 +7,11 @@
 #endif /* not __ASSEMBLER__ */
 
 /*
- * This file contains definitions for memory management in our OS,
- * which are relevant to both the kernel and user-mode software.
+ * This file contains definitions for memory management in our OS, 这个文件中包含操作系统中内存管理的定义
+ * which are relevant to both the kernel and user-mode software.   它们与内核和用户模式软件都想关
  */
 
-// Global descriptor numbers
+// Global descriptor numbers    
 #define GD_KT     0x08     // kernel text
 #define GD_KD     0x10     // kernel data
 #define GD_UT     0x18     // user text
@@ -83,7 +83,7 @@
  */
 
 
-// All physical memory mapped at this address
+// All physical memory mapped at this address   映射到这个地址的所有物理内存
 #define	KERNBASE	0xF0000000
 
 // At IOPHYSMEM (640K) there is a 384K hole for I/O.  From the kernel,
@@ -166,14 +166,14 @@ extern volatile pde_t uvpd[];     // VA of current page directory
  * Page descriptor structures, mapped at UPAGES.
  * Read/write to the kernel, read-only to user programs.
  *
- * Each struct PageInfo stores metadata for one physical page.
+ * Each struct PageInfo stores metadata for one physical page.     每个结构体PageInfo存储一个物理页面的元数据。
  * Is it NOT the physical page itself, but there is a one-to-one
- * correspondence between physical pages and struct PageInfo's.
+ * correspondence between physical pages and struct PageInfo's.     它不是物理页本身，而是物理页和结构体PageInfo之间存在一一对应关系。
  * You can map a struct PageInfo * to the corresponding physical address
- * with page2pa() in kern/pmap.h.
+ * with page2pa() in kern/pmap.h.      你可以用kern/pmap.h中的page2pa()将结构体PageInfo *映射到相应的物理地址。
  */
 struct PageInfo {
-	// Next page on the free list.
+	// Next page on the free list.  free list上的下一页。
 	struct PageInfo *pp_link;
 
 	// pp_ref is the count of pointers (usually in page table entries)

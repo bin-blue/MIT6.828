@@ -4,7 +4,7 @@
 /*
  * This file contains definitions for the x86 memory management unit (MMU),
  * including paging- and segmentation-related data structures and constants,
- * the %cr0, %cr4, and %eflags registers, and traps.
+ * the %cr0, %cr4, and %eflags registers, and traps. 这个文件包含x86内存管理单元(MMU)的定义，包括分页和分段相关的数据结构和常量、%cr0、%cr4和%eflags寄存器和陷阱
  */
 
 /*
@@ -26,7 +26,7 @@
 // To construct a linear address la from PDX(la), PTX(la), and PGOFF(la),
 // use PGADDR(PDX(la), PTX(la), PGOFF(la)).
 
-// page number field of address
+// page number field of address  //地址的页码字段
 #define PGNUM(la)	(((uintptr_t) (la)) >> PTXSHIFT)
 
 // page directory index
@@ -38,17 +38,17 @@
 // offset in page
 #define PGOFF(la)	(((uintptr_t) (la)) & 0xFFF)
 
-// construct linear address from indexes and offset
+// construct linear address from indexes and offset  从索引和偏移量构造线性地址
 #define PGADDR(d, t, o)	((void*) ((d) << PDXSHIFT | (t) << PTXSHIFT | (o)))
 
-// Page directory and page table constants.
+// Page directory and page table constants.  页目录和页表常量
 #define NPDENTRIES	1024		// page directory entries per page directory
-#define NPTENTRIES	1024		// page table entries per page table
+#define NPTENTRIES	1024		// page table entries per page table  每个页表的页表项
 
 #define PGSIZE		4096		// bytes mapped by a page
 #define PGSHIFT		12		// log2(PGSIZE)
 
-#define PTSIZE		(PGSIZE*NPTENTRIES) // bytes mapped by a page directory entry
+#define PTSIZE		(PGSIZE*NPTENTRIES) // bytes mapped by a page directory entry  由页目录条目映射的字节数
 #define PTSHIFT		22		// log2(PTSIZE)
 
 #define PTXSHIFT	12		// offset of PTX in a linear address
